@@ -1,9 +1,11 @@
 package com.untitled.unboxing.feature
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -23,6 +25,7 @@ internal fun Root() {
     val navController = rememberNavController()
 
     Scaffold(
+        modifier = Modifier,
         bottomBar = {
             BottomBar(navController = navController)
         }

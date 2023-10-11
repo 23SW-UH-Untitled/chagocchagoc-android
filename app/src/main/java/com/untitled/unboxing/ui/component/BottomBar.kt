@@ -40,7 +40,7 @@ internal fun BottomBar(
     BottomNavigation(
         modifier = Modifier
             .fillMaxWidth()
-            .height(64.dp)
+            .height(88.dp)
             .graphicsLayer(
                 clip = true,
                 shape = RoundedCornerShape(
