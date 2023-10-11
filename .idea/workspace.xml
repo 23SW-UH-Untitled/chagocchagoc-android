@@ -16,13 +16,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/Root.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/Root.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/main/home/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/main/home/HomeScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/main/withdrawal/WithdrawalScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/main/withdrawal/WithdrawalScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/ui/theme/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/registerproduct/RegisterProduct.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/registerproduct/RegisterProduct.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +94,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="feature/home" />
-                    <option name="lastUsedInstant" value="1697025995" />
+                    <option name="lastUsedInstant" value="1697044970" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -131,7 +126,7 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "/Users/jeongseunghun/Desktop/Github/chagocchagoc-android",
+    "last_opened_file_path": "/Users/jeongseunghun/Desktop/Github/chagocchagoc-android/app/src/main/res/drawable",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "show.migrate.to.gradle.popup": "false"
   }

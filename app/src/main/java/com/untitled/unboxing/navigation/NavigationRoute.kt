@@ -4,6 +4,7 @@ internal sealed class NavigationRoute(val route: String) {
     object Common : NavigationRoute(route = "common") {
         const val Splash = "splash"
         const val Root = "root"
+        const val RegisterProduct = "registerProduct"
     }
 
     object Main : NavigationRoute(route = "main") {
