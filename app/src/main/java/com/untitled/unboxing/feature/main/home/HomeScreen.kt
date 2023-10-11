@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.untitled.chagocchagoc.R
+import com.untitled.unboxing.feature.main.withdrawal.ProductType
 import com.untitled.unboxing.ui.component.Header
 import com.untitled.unboxing.ui.theme.UnboxingColor
 import com.untitled.unboxing.ui.theme.UnboxingTypo
@@ -137,6 +138,7 @@ private fun Product(
                     imageUrl = it.profileImageUrl,
                     title = it.title,
                     count = it.count,
+                    onClick = {},
                 )
             }
         }
@@ -245,12 +247,22 @@ private fun WithdrawalButton(
 }
 
 @Composable
-private fun ProductItem(
+internal fun ProductItem(
+    onClick: () -> Unit,
+    productType: ProductType? = null,
     imageUrl: String,
     title: String,
     count: Long,
 ) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .unboxingClickable(
+                rippleEnabled = true,
+                onClick = onClick,
+            ),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         AsyncImage(
             modifier = Modifier
                 .size(102.dp)
@@ -261,6 +273,13 @@ private fun ProductItem(
         )
         Spacer(modifier = Modifier.width(16.dp))
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            if (productType != null) {
+                Text(
+                    text = productType.type,
+                    color = if (productType == ProductType.WAREHOUSING) UnboxingColor.Primary30
+                    else UnboxingColor.Error,
+                )
+            }
             Text(
                 text = title,
                 style = UnboxingTypo.body2,

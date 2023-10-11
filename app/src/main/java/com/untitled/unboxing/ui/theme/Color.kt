@@ -17,6 +17,8 @@ object UnboxingColor {
     val Primary99 = Color(0xFFFAFDFF)
     val Primary100 = Color(0xFFFFFFFF)
 
+    val Error = Color(0xFFFF4D4D)
+
     val Neutral0 = Color(0xFF000000)
     val Neutral10 = Color(0xFF17191C)
     val Neutral20 = Color(0xFF373C43)

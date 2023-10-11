@@ -35,7 +35,7 @@ internal fun Root() {
             startDestination = NavigationRoute.Main.route,
         ) {
             navigation(
-                startDestination = NavigationRoute.Main.Home,
+                startDestination = NavigationRoute.Main.Withdrawal,
                 route = NavigationRoute.Main.route,
             ) {
                 composable(route = NavigationRoute.Main.Home) {
