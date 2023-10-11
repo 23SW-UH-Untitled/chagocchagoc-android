@@ -44,16 +44,16 @@ internal fun BottomBar(
             .graphicsLayer(
                 clip = true,
                 shape = RoundedCornerShape(
-                    topStart = 16.dp,
-                    topEnd = 16.dp,
+                    topStart = 20.dp,
+                    topEnd = 20.dp,
                 ),
             )
             .border(
                 width = 1.dp,
                 color = UnboxingColor.Neutral95,
                 shape = RoundedCornerShape(
-                    topStart = 16.dp,
-                    topEnd = 16.dp,
+                    topStart = 20.dp,
+                    topEnd = 20.dp,
                 )
             ),
         backgroundColor = UnboxingColor.Neutral100,
