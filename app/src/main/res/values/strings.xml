@@ -1,9 +1,13 @@
 <resources>
-    <string name="app_name">ChagocChagoc</string>
+    <string name="app_name">Unboxing</string>
+    <string name="unboxing">UNBOXING</string>
 
     <string name="home">홈</string>
     <string name="product">제품</string>
     <string name="withdrawal">입고 출고</string>
     <string name="stats">통계</string>
     <string name="my">마이</string>
+
+    <!--sign in-->
+    <string name="sign_in_with_google">Google로 시작하기</string>
 </resources>

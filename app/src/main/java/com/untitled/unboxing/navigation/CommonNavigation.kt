@@ -8,7 +8,7 @@ import com.untitled.unboxing.feature.splash.SplashScreen
 
 internal fun NavGraphBuilder.commonNavigation() {
     navigation(
-        startDestination = NavigationRoute.Common.Root,
+        startDestination = NavigationRoute.Common.Splash,
         route = NavigationRoute.Common.route,
     ) {
         composable(route = NavigationRoute.Common.Splash) {
