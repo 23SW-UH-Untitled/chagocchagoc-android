@@ -20,7 +20,6 @@ import com.untitled.unboxing.ui.component.BottomBar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun Root() {
-
     val navController = rememberNavController()
 
     Scaffold(

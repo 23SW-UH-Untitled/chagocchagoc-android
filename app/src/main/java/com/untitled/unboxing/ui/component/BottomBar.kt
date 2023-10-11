@@ -1,6 +1,7 @@
 package com.untitled.unboxing.ui.component
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,7 +19,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.untitled.unboxing.ui.theme.ChagocColor
+import com.untitled.unboxing.ui.theme.UnboxingTypo
+import com.untitled.unboxing.ui.theme.UnboxingColor
 
 @Composable
 internal fun BottomBar(
@@ -44,23 +46,36 @@ internal fun BottomBar(
                     topStart = 16.dp,
                     topEnd = 16.dp,
                 ),
-                shadowElevation = 1f,
+            )
+            .border(
+                width = 1.dp,
+                color = UnboxingColor.Neutral90,
+                shape = RoundedCornerShape(
+                    topStart = 16.dp,
+                    topEnd = 16.dp,
+                )
             ),
-        backgroundColor = ChagocColor.Neutral100,
+        backgroundColor = UnboxingColor.Neutral100,
     ) {
         tabs.forEach {
             val selected = currentRoute == it.route
 
             val iconTint by animateColorAsState(
-                targetValue = if (selected) ChagocColor.Neutral10
-                else ChagocColor.Neutral50,
+                targetValue = if (selected) UnboxingColor.Neutral10
+                else UnboxingColor.Neutral50,
                 label = "",
             )
 
             BottomNavigationItem(
                 modifier = Modifier.padding(vertical = 12.dp),
                 selected = selected,
-                onClick = { navController.navigate(it.route) },
+                onClick = {
+                    navController.navigate(it.route) {
+                        popUpTo(navController.graph.id){
+                            inclusive = true
+                        }
+                    }
+                },
                 icon = {
                     Icon(
                         modifier = Modifier.padding(bottom = 8.dp),
@@ -74,6 +89,7 @@ internal fun BottomBar(
                         modifier = Modifier.padding(bottom = 12.dp),
                         text = stringResource(id = it.labelRes),
                         color = iconTint,
+                        style = UnboxingTypo.caption
                     )
                 }
             )
