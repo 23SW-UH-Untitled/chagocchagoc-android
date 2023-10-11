@@ -1,4 +1,4 @@
-package com.untitled.chagocchagoc.ui.theme
+package com.untitled.unboxing.ui.theme
 
 import android.app.Activity
 import android.os.Build

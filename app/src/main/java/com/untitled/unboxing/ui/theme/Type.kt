@@ -1,4 +1,4 @@
-package com.untitled.chagocchagoc.ui.theme
+package com.untitled.unboxing.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

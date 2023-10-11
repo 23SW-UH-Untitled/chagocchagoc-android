@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ChagocChagoc</string>
+
+    <string name="home">홈</string>
+    <string name="product">제품</string>
+    <string name="withdrawal">입고 출고</string>
+    <string name="stats">통계</string>
+    <string name="my">마이</string>
 </resources>
