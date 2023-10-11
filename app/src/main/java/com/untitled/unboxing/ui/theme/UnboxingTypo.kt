@@ -9,11 +9,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.untitled.chagocchagoc.R
 
-val aggroFamily = FontFamily(
-    Font(R.font.sb_aggro_large, FontWeight.Normal),
-    Font(R.font.sb_aggro_medium, FontWeight.Medium),
-    Font(R.font.sb_aggro_bold, FontWeight.Bold),
-    Font(R.font.sb_aggro_bold, FontWeight.SemiBold),
+@Stable
+val pretendardFamily = FontFamily(
+    Font(R.font.pretendard_black, FontWeight.Black),
+    Font(R.font.pretendard_bold, FontWeight.Bold),
+    Font(R.font.pretendard_light, FontWeight.Light),
+    Font(R.font.pretendard_medium, FontWeight.Medium),
+    Font(R.font.pretendard_regular, FontWeight.Normal),
+    Font(R.font.pretendard_thin, FontWeight.Thin),
 )
 
 object UnboxingTypo {
@@ -23,7 +26,7 @@ object UnboxingTypo {
 
     @Stable
     val h1 = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 40.sp,
         lineHeight = 60.sp,
@@ -32,7 +35,7 @@ object UnboxingTypo {
 
     @Stable
     val h2 = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 36.sp,
         lineHeight = 54.sp,
@@ -41,7 +44,7 @@ object UnboxingTypo {
 
     @Stable
     val h3 = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 32.sp,
         lineHeight = 48.sp,
@@ -50,7 +53,7 @@ object UnboxingTypo {
 
     @Stable
     val h4 = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 28.sp,
         lineHeight = 40.sp,
@@ -59,7 +62,7 @@ object UnboxingTypo {
 
     @Stable
     val h5 = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 24.sp,
         lineHeight = 36.sp,
@@ -68,7 +71,7 @@ object UnboxingTypo {
 
     @Stable
     val h6 = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 20.sp,
         lineHeight = 28.sp,
@@ -77,7 +80,7 @@ object UnboxingTypo {
 
     @Stable
     val body1 = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 18.sp,
         lineHeight = 26.sp,
@@ -86,7 +89,7 @@ object UnboxingTypo {
 
     @Stable
     val body2 = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
@@ -95,7 +98,7 @@ object UnboxingTypo {
 
     @Stable
     val subtitle1 = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 20.sp,
@@ -104,7 +107,7 @@ object UnboxingTypo {
 
     @Stable
     val subtitle2 = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
@@ -113,11 +116,10 @@ object UnboxingTypo {
 
     @Stable
     val caption = TextStyle(
-        fontFamily = aggroFamily,
+        fontFamily = pretendardFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         lineHeight = 18.sp,
         platformStyle = platFormTextStyle,
     )
-
 }

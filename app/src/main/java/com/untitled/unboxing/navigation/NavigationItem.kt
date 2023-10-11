@@ -1,9 +1,8 @@
-package com.untitled.unboxing.ui.component
+package com.untitled.unboxing.navigation
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.untitled.chagocchagoc.R
-import com.untitled.unboxing.navigation.NavigationRoute
 
 internal sealed class NavigationItem(
     val route: String,

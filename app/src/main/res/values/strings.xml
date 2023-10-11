@@ -8,6 +8,8 @@
     <string name="stats">통계</string>
     <string name="my">마이</string>
 
+    <string name="stock">재고</string>
+
     <!--sign in-->
     <string name="sign_in_with_google">Google로 시작하기</string>
 </resources>
