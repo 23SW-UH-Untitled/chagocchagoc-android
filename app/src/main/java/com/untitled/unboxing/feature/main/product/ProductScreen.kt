@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
@@ -61,13 +62,14 @@ internal fun ProductScreen() {
 
     updateScrollPosition(scrollState.firstVisibleItemIndex)
 
-    val position by animateFloatAsState(if (scrollUpState) -150f else 0f, label = "")
+    val position by animateFloatAsState(if (scrollUpState) -300f else 0f, label = "")
 
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
             .padding(horizontal = 24.dp)
+            .statusBarsPadding()
     ) {
         LazyVerticalGrid(
             state = scrollState,
