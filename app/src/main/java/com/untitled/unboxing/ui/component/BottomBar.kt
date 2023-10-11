@@ -40,7 +40,7 @@ internal fun BottomBar(
     BottomNavigation(
         modifier = Modifier
             .fillMaxWidth()
-            .height(88.dp)
+            .height(75.dp)
             .graphicsLayer(
                 clip = true,
                 shape = RoundedCornerShape(
@@ -68,7 +68,6 @@ internal fun BottomBar(
             )
 
             BottomNavigationItem(
-                modifier = Modifier.padding(vertical = 12.dp),
                 selected = selected,
                 onClick = {
                     navController.navigate(it.route) {
