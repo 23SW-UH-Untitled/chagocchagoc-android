@@ -50,7 +50,7 @@ internal fun BottomBar(
             )
             .border(
                 width = 1.dp,
-                color = UnboxingColor.Neutral90,
+                color = UnboxingColor.Neutral95,
                 shape = RoundedCornerShape(
                     topStart = 16.dp,
                     topEnd = 16.dp,
@@ -79,7 +79,7 @@ internal fun BottomBar(
                 },
                 icon = {
                     Icon(
-                        modifier = Modifier.padding(bottom = 8.dp),
+                        modifier = Modifier.padding(bottom = 2.dp),
                         painter = painterResource(id = it.iconRes),
                         contentDescription = null,
                         tint = iconTint,

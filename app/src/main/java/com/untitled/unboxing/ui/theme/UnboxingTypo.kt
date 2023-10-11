@@ -17,6 +17,7 @@ val pretendardFamily = FontFamily(
     Font(R.font.pretendard_medium, FontWeight.Medium),
     Font(R.font.pretendard_regular, FontWeight.Normal),
     Font(R.font.pretendard_thin, FontWeight.Thin),
+    Font(R.font.pretendard_semi_bold, FontWeight.SemiBold)
 )
 
 object UnboxingTypo {
@@ -117,8 +118,8 @@ object UnboxingTypo {
     @Stable
     val caption = TextStyle(
         fontFamily = pretendardFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 10.sp,
         lineHeight = 18.sp,
         platformStyle = platFormTextStyle,
     )
