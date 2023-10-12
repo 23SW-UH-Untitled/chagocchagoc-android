@@ -7,6 +7,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.untitled.unboxing.feature.Root
+import com.untitled.unboxing.feature.inputwithdrawal.InputReceivingScreen
+import com.untitled.unboxing.feature.inputwithdrawal.InputReleasingScreen
 import com.untitled.unboxing.feature.productdetail.ProductDetailScreen
 import com.untitled.unboxing.feature.registerproduct.RegisterProduct
 import com.untitled.unboxing.feature.splash.SplashScreen
@@ -18,7 +20,7 @@ internal fun NavGraphBuilder.commonNavigation(
     navController: NavController,
 ) {
     navigation(
-        startDestination = NavigationRoute.Common.Splash,
+        startDestination = NavigationRoute.Common.InputReleasing,
         route = NavigationRoute.Common.route,
     ) {
         composable(route = NavigationRoute.Common.Splash) {
@@ -35,6 +37,14 @@ internal fun NavGraphBuilder.commonNavigation(
 
         composable(route = NavigationRoute.Common.ProductDetail) {
             ProductDetailScreen()
+        }
+
+        composable(route = NavigationRoute.Common.InputReceiving) {
+            InputReceivingScreen()
+        }
+
+        composable(route = NavigationRoute.Common.InputReleasing) {
+            InputReleasingScreen()
         }
     }
 }

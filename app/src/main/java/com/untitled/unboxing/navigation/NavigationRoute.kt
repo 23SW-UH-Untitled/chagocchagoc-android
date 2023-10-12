@@ -6,6 +6,8 @@ internal sealed class NavigationRoute(val route: String) {
         const val Root = "root"
         const val RegisterProduct = "registerProduct"
         const val ProductDetail = "productDetail"
+        const val InputReceiving= "inputReceiving"
+        const val InputReleasing = "inputReleasing"
     }
 
     object Main : NavigationRoute(route = "main") {
