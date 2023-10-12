@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_arrow_right_calendar" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../../ic_arrow_right_calendar.svg" />
+                            <entry key="outputName" value="ic_camera" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../../ic_camera.svg" />
                           </map>
                         </option>
                       </PersistentState>
