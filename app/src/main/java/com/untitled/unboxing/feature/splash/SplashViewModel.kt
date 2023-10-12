@@ -3,6 +3,7 @@ package com.untitled.unboxing.feature.splash
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.untitled.unboxing.model.TokenResponse
 import com.untitled.unboxing.network.RetrofitUnboxingNetwork
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -16,14 +17,14 @@ internal class SplashViewModel @Inject constructor(
     private val retrofitUnboxingNetwork: RetrofitUnboxingNetwork
 ) : ViewModel() {
 
-    private val _successLogin = MutableSharedFlow<Unit>()
+    private val _successLogin = MutableSharedFlow<TokenResponse>()
     val successLogin = _successLogin.asSharedFlow()
 
     fun login(token: String) = viewModelScope.launch {
         kotlin.runCatching {
             retrofitUnboxingNetwork.login(token)
         }.onSuccess {
-            _successLogin.emit(Unit)
+            _successLogin.emit(it)
         }.onFailure {
             Log.e("ERROR", it.message.toString(), )
         }
