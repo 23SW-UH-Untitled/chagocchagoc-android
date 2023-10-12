@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.android.gms.common.api.ApiException
 import com.untitled.unboxing.GoogleApiContract
 import com.untitled.unboxing.R
@@ -30,18 +31,18 @@ import com.untitled.unboxing.ui.util.bounceClick
 import com.untitled.unboxing.ui.util.unboxingClickable
 
 @Composable
-internal fun SplashScreen() {
-
+internal fun SplashScreen(
+    viewModel: SplashViewModel = hiltViewModel(),
+) {
     val authResultLauncher =
         rememberLauncherForActivityResult(GoogleApiContract()) { task ->
             try {
                 val gsa = task?.getResult(ApiException::class.java)
                 if (gsa != null) {
-                    Log.d("FUCK", "${gsa.idToken}")
+                    viewModel.login(gsa.idToken!!)
                 }
             } catch (e: ApiException) {
                 e.printStackTrace()
-
             }
         }
 
@@ -66,7 +67,7 @@ internal fun SplashScreen() {
         Spacer(modifier = Modifier.weight(1f))
         SignInButton(
             onClick = {
-                authResultLauncher.launch(-1)
+                authResultLauncher.launch(1)
             },
             text = stringResource(id = R.string.sign_in_with_google),
         )

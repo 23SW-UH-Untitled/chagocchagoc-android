@@ -14,6 +14,7 @@ class GoogleApiContract : ActivityResultContract<Int, Task<GoogleSignInAccount>?
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(context.getString(R.string.client_id))
             .requestEmail()
+            .requestProfile()
             .build()
 
         val intent = GoogleSignIn.getClient(context, gso)
