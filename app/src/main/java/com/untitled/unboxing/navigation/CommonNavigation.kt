@@ -9,6 +9,7 @@ import androidx.navigation.navigation
 import com.untitled.unboxing.feature.Root
 import com.untitled.unboxing.feature.productdetail.ProductDetailScreen
 import com.untitled.unboxing.feature.registerproduct.RegisterProduct
+import com.untitled.unboxing.feature.scanbarcode.ScanBarcodeScreen
 import com.untitled.unboxing.feature.splash.SplashScreen
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -33,8 +34,13 @@ internal fun NavGraphBuilder.commonNavigation(
             RegisterProduct(popBackStack = popBackStack)
         }
 
+<<<<<<< HEAD
         composable(route = NavigationRoute.Common.ProductDetail) {
             ProductDetailScreen()
+=======
+        composable(route = NavigationRoute.Common.ScanBarcode) {
+            ScanBarcodeScreen(popBackStack = popBackStack)
+>>>>>>> feature/home
         }
     }
 }

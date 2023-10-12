@@ -54,6 +54,10 @@ android {
 
 dependencies {
 
+    implementation("com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0")
+    implementation("androidx.camera:camera-lifecycle:1.2.3")
+    implementation("androidx.camera:camera-camera2:1.2.3")
+    implementation("androidx.camera:camera-view:1.2.3")
     implementation("io.coil-kt:coil-compose:2.4.0")
     implementation("androidx.navigation:navigation-compose:2.7.4")
     implementation("androidx.compose.material:material:1.5.3")
