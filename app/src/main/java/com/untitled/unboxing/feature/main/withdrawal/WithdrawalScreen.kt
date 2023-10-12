@@ -24,7 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import com.untitled.chagocchagoc.R
+import com.untitled.unboxing.R
 import com.untitled.unboxing.feature.main.home.ProductItem
 import com.untitled.unboxing.ui.component.Header
 import com.untitled.unboxing.ui.theme.UnboxingTypo
