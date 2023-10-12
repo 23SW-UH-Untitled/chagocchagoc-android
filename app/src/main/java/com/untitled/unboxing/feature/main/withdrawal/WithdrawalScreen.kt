@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,9 +26,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.untitled.unboxing.R
 import com.untitled.unboxing.feature.main.home.ProductItem
 import com.untitled.unboxing.ui.component.Header
+import com.untitled.unboxing.ui.component.LineChart
+import com.untitled.unboxing.ui.theme.UnboxingColor
 import com.untitled.unboxing.ui.theme.UnboxingTypo
 import com.untitled.unboxing.ui.util.unboxingClickable
 import java.time.LocalDateTime
@@ -65,8 +70,8 @@ internal fun WithdrawalScreen(
             .padding(
                 start = 24.dp,
                 end = 24.dp,
-                bottom = 90.dp,
-            ),
+            )
+            .systemBarsPadding(),
     ) {
         Spacer(modifier = Modifier.height(50.dp))
         Header(
@@ -81,6 +86,14 @@ internal fun WithdrawalScreen(
             )
         )
         Spacer(modifier = Modifier.height(20.dp))
+        Text(
+            text = "입고/출고",
+            fontWeight = FontWeight.Bold,
+            style = UnboxingTypo.h4.copy(
+                fontSize = 26.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+        )
         Spacer(modifier = Modifier.height(24.dp))
         Calendar(
             year = currentYear,
@@ -89,6 +102,35 @@ internal fun WithdrawalScreen(
             onRightClick = onRightClick,
             onClick = {},
         )
+        Spacer(modifier = Modifier.height(24.dp))
+        LineChart(
+            data = listOf(
+                Pair("10.1", 30.0),
+                Pair("10.12", 500.0),
+                Pair("10.15", 500.0),
+                Pair("10.24", 500.0),
+                Pair("10.26", 455.0),
+                Pair("10.27", 455.0),
+                Pair("10.28", 455.0),
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp),
+        )
+        Spacer(modifier = Modifier.height(42.dp))
+        Row {
+            Text(
+                text = "${currentMonth}월 총 재고량",
+                color = UnboxingColor.Neutral40,
+                style = UnboxingTypo.subtitle1,
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                text = "54,000개",
+                color = UnboxingColor.Neutral20,
+                style = UnboxingTypo.subtitle1,
+            )
+        }
         Withdrawals(
             list = listOf(
                 1 to listOf(
@@ -141,6 +183,9 @@ private fun Withdrawals(
                 week = "수",
                 products = it.second,
             )
+        }
+        item{
+            Spacer(modifier = Modifier.height(60.dp))
         }
     }
 }

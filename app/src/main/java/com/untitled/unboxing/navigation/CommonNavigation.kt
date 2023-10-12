@@ -18,7 +18,7 @@ internal fun NavGraphBuilder.commonNavigation(
     navController: NavController,
 ) {
     navigation(
-        startDestination = NavigationRoute.Common.Splash,
+        startDestination = NavigationRoute.Common.Root,
         route = NavigationRoute.Common.route,
     ) {
         composable(route = NavigationRoute.Common.Splash) {

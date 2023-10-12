@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -61,24 +62,14 @@ internal fun HomeScreen() {
 
     val scrollScale = rememberScrollState()
 
-    /*val alpha by animateFloatAsState(
-        targetValue = if (scrollScale.value >= 300) 0f
-        else 1f,
-        label = "",
-    )
-
-    LaunchedEffect(scrollScale.value) {
-        Log.d("TEST", scrollScale.value.toString())
-    }*/
-
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(UnboxingColor.Neutral95)
-            .padding(bottom = 70.dp),
+            .systemBarsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(modifier = Modifier.height(50.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         Box(modifier = Modifier.padding(horizontal = 24.dp)) {
             Header(
                 leadingIconRes = R.drawable.ic_logo_header,
@@ -99,6 +90,7 @@ internal fun HomeScreen() {
                 onReleasedClick = {},
                 onWareHousingClick = {},
             )
+            Spacer(modifier = Modifier.height(40.dp))
         }
     }
 }
@@ -162,6 +154,12 @@ private fun Withdrawals(
             .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
+        Text(
+            text = "입고/출고",
+            style = UnboxingTypo.h6,
+            fontWeight = FontWeight.Bold,
+            fontSize = 22.sp,
+        )
         Withdrawal(
             iconRes = R.drawable.ic_warehousing,
             title = stringResource(id = R.string.home_today_warehousing),
