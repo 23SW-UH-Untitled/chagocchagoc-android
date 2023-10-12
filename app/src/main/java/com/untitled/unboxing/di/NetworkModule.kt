@@ -14,7 +14,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
-private const val UNBOXING_URL = "https://192.168.7.209:8080/"
+private const val UNBOXING_URL = "http://192.168.7.209:8080/"
 
 @Module
 @InstallIn(SingletonComponent::class)

@@ -1,6 +1,5 @@
 package com.untitled.unboxing.feature.splash
 
-import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -14,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,9 +22,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.google.android.gms.common.api.ApiException
 import com.untitled.unboxing.GoogleApiContract
 import com.untitled.unboxing.R
+import com.untitled.unboxing.navigation.NavigationRoute
 import com.untitled.unboxing.ui.theme.UnboxingColor
 import com.untitled.unboxing.ui.theme.UnboxingTypo
 import com.untitled.unboxing.ui.util.bounceClick
@@ -33,7 +35,15 @@ import com.untitled.unboxing.ui.util.unboxingClickable
 @Composable
 internal fun SplashScreen(
     viewModel: SplashViewModel = hiltViewModel(),
+    navController: NavController
 ) {
+
+    LaunchedEffect(Unit) {
+        viewModel.successLogin.collect {
+            navController.navigate(NavigationRoute.Common.Root)
+        }
+    }
+
     val authResultLauncher =
         rememberLauncherForActivityResult(GoogleApiContract()) { task ->
             try {
