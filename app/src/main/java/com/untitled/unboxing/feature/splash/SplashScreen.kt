@@ -2,12 +2,14 @@ package com.untitled.unboxing.feature.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
@@ -17,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.untitled.chagocchagoc.R
 import com.untitled.unboxing.ui.theme.UnboxingColor
@@ -30,7 +33,7 @@ internal fun SplashScreen() {
         modifier = Modifier
             .fillMaxSize()
             .padding(
-                top = 116.dp,
+                top = 169.dp,
                 bottom = 54.dp,
                 start = 24.dp,
                 end = 24.dp,
@@ -39,6 +42,7 @@ internal fun SplashScreen() {
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
+                modifier = Modifier.size(191.dp, 212.dp),
                 painter = painterResource(id = R.drawable.ic_logo),
                 contentDescription = null,
             )
@@ -56,14 +60,14 @@ private fun SignInButton(
     onClick: () -> Unit,
     text: String,
 ) {
-    Row(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
             .clip(CircleShape)
             .bounceClick()
             .border(
                 width = 1.dp,
-                color = UnboxingColor.Neutral70,
+                color = UnboxingColor.Neutral90,
                 shape = CircleShape,
             )
             .unboxingClickable(onClick = onClick)
@@ -71,16 +75,20 @@ private fun SignInButton(
                 horizontal = 36.dp,
                 vertical = 14.dp,
             ),
-        verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
+            modifier = Modifier
+                .size(28.dp)
+                .align(Alignment.CenterStart),
             painter = painterResource(id = R.drawable.ic_google),
             contentDescription = null,
         )
-        Spacer(modifier = Modifier.width(48.dp))
         Text(
+            modifier = Modifier.align(Alignment.Center),
             text = text,
-            style = UnboxingTypo.body1,
+            style = UnboxingTypo.body1.copy(
+                fontWeight = FontWeight.SemiBold
+            ),
         )
     }
 }
