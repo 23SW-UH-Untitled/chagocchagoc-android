@@ -66,7 +66,9 @@ private enum class PermissionType {
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-internal fun RegisterProduct() {
+internal fun RegisterProduct(
+    popBackStack: () -> Unit,
+) {
     var name by remember { mutableStateOf("") }
     val onNameChange = { value: String ->
         name = value
@@ -192,6 +194,7 @@ internal fun RegisterProduct() {
         ) {
             Spacer(modifier = Modifier.height(50.dp))
             Image(
+                modifier = Modifier.unboxingClickable(onClick = popBackStack),
                 painter = painterResource(id = R.drawable.ic_direction_left),
                 contentDescription = null,
             )
@@ -241,7 +244,7 @@ internal fun RegisterProduct() {
             Spacer(modifier = Modifier.weight(1f))
             ProductButton(
                 text = "확인",
-                onClick = {},
+                onClick = popBackStack,
             )
             Spacer(modifier = Modifier.height(32.dp))
         }

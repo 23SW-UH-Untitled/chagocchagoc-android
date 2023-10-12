@@ -21,7 +21,9 @@ import com.untitled.unboxing.ui.component.BottomBar
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun Root() {
+internal fun Root(
+    navigateToRegisterProduct: () -> Unit,
+) {
     val navController = rememberNavController()
 
     Scaffold(
@@ -35,7 +37,7 @@ internal fun Root() {
             startDestination = NavigationRoute.Main.route,
         ) {
             navigation(
-                startDestination = NavigationRoute.Main.Withdrawal,
+                startDestination = NavigationRoute.Main.Home,
                 route = NavigationRoute.Main.route,
             ) {
                 composable(route = NavigationRoute.Main.Home) {
@@ -47,7 +49,7 @@ internal fun Root() {
                 }
 
                 composable(route = NavigationRoute.Main.Withdrawal) {
-                    WithdrawalScreen()
+                    WithdrawalScreen(navigateToRegisterProduct = navigateToRegisterProduct)
                 }
 
                 composable(route = NavigationRoute.Main.Stats) {

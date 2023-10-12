@@ -74,7 +74,8 @@ internal fun HomeScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(UnboxingColor.Neutral95),
+            .background(UnboxingColor.Neutral95)
+            .padding(bottom = 70.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Spacer(modifier = Modifier.height(50.dp))
@@ -82,6 +83,7 @@ internal fun HomeScreen() {
             Header(
                 leadingIconRes = R.drawable.ic_logo_header,
                 trailingIconRes = listOf(R.drawable.ic_notification),
+                onClicks = null,
             )
         }
         Column(

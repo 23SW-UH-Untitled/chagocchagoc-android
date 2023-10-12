@@ -32,7 +32,9 @@ import com.untitled.unboxing.ui.util.unboxingClickable
 import java.time.LocalDateTime
 
 @Composable
-internal fun WithdrawalScreen() {
+internal fun WithdrawalScreen(
+    navigateToRegisterProduct: () -> Unit,
+) {
 
     var currentYear by remember { mutableIntStateOf(LocalDateTime.now().year) }
     var currentMonth by remember { mutableIntStateOf(LocalDateTime.now().monthValue) }
@@ -72,15 +74,13 @@ internal fun WithdrawalScreen() {
             trailingIconRes = listOf(
                 R.drawable.ic_search,
                 R.drawable.ic_barcode,
+            ),
+            onClicks = listOf(
+                null,
+                navigateToRegisterProduct,
             )
         )
         Spacer(modifier = Modifier.height(20.dp))
-        Text(
-            modifier = Modifier.align(Alignment.Start),
-            text = "입고/출고",
-            style = UnboxingTypo.h4,
-            fontWeight = FontWeight.Bold,
-        )
         Spacer(modifier = Modifier.height(24.dp))
         Calendar(
             year = currentYear,
