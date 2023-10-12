@@ -7,7 +7,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.untitled.chagocchagoc.R
+import com.untitled.unboxing.R
 
 @Stable
 val pretendardFamily = FontFamily(

@@ -19,5 +19,7 @@
 
     <string name="home_warehousing">입고</string>
     <string name="home_released">출고</string>
+    
+    <string name="client_id">583148971726-7q6n48g86n7pkg6r774mdicf6m0sk92q.apps.googleusercontent.com</string>
 
 </resources>

@@ -2,7 +2,7 @@ package com.untitled.unboxing.navigation
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.untitled.chagocchagoc.R
+import com.untitled.unboxing.R
 
 internal sealed class NavigationItem(
     val route: String,

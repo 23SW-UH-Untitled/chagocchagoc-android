@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.untitled.chagocchagoc"
+    namespace = "com.untitled.unboxing"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.untitled.chagocchagoc"
+        applicationId = "com.untitled.unboxing"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
@@ -71,4 +71,6 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    implementation("com.google.android.gms:play-services-auth:20.5.0")
 }

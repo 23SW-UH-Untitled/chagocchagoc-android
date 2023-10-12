@@ -29,7 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.untitled.chagocchagoc.R
+import com.untitled.unboxing.R
 import com.untitled.unboxing.feature.main.withdrawal.ProductType
 import com.untitled.unboxing.ui.component.Header
 import com.untitled.unboxing.ui.theme.UnboxingColor
