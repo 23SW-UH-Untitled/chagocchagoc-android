@@ -16,7 +16,7 @@ internal fun NavGraphBuilder.commonNavigation(
     popBackStack: () -> Unit,
 ) {
     navigation(
-        startDestination = NavigationRoute.Common.ScanBarcode,
+        startDestination = NavigationRoute.Common.Splash,
         route = NavigationRoute.Common.route,
     ) {
         composable(route = NavigationRoute.Common.Splash) {
@@ -31,8 +31,8 @@ internal fun NavGraphBuilder.commonNavigation(
             RegisterProduct(popBackStack = popBackStack)
         }
 
-        composable(route = NavigationRoute.Common.ScanBarcode){
-            ScanBarcodeScreen()
+        composable(route = NavigationRoute.Common.ScanBarcode) {
+            ScanBarcodeScreen(popBackStack = popBackStack)
         }
     }
 }
