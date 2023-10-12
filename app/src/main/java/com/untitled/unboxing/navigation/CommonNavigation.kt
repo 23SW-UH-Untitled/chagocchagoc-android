@@ -43,7 +43,11 @@ internal fun NavGraphBuilder.commonNavigation(
         }
 
         composable(route = NavigationRoute.Common.ProductDetail) {
-            ProductDetailScreen()
+            ProductDetailScreen(
+                navigateToInputReceiving = navigateToInputReceiving,
+                navigateToInputReleasing = navigateToInputReleasing,
+                popBackStack = popBackStack
+            )
         }
 
         composable(route = NavigationRoute.Common.ScanBarcode) {
