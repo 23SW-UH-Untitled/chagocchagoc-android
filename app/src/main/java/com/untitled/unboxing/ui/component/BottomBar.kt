@@ -22,6 +22,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.untitled.unboxing.navigation.NavigationItem
 import com.untitled.unboxing.ui.theme.UnboxingTypo
 import com.untitled.unboxing.ui.theme.UnboxingColor
+import com.untitled.unboxing.ui.util.NoRippleInteractionSource
+import com.untitled.unboxing.ui.util.bounceClick
 
 @Composable
 internal fun BottomBar(
@@ -68,6 +70,8 @@ internal fun BottomBar(
             )
 
             BottomNavigationItem(
+                modifier = Modifier.bounceClick(),
+                interactionSource = NoRippleInteractionSource(),
                 selected = selected,
                 onClick = {
                     navController.navigate(it.route) {

@@ -16,11 +16,14 @@ import com.untitled.unboxing.feature.splash.SplashScreen
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 internal fun NavGraphBuilder.commonNavigation(
     navigateToRegisterProduct: () -> Unit,
+    navigateToProductDetail: () -> Unit,
+    navigateToInputReleasing: () -> Unit,
+    navigateToInputReceiving: () -> Unit,
     popBackStack: () -> Unit,
     navController: NavController,
 ) {
     navigation(
-        startDestination = NavigationRoute.Common.InputReleasing,
+        startDestination = NavigationRoute.Common.Splash,
         route = NavigationRoute.Common.route,
     ) {
         composable(route = NavigationRoute.Common.Splash) {
@@ -28,7 +31,10 @@ internal fun NavGraphBuilder.commonNavigation(
         }
 
         composable(route = NavigationRoute.Common.Root) {
-            Root(navigateToRegisterProduct = navigateToRegisterProduct)
+            Root(
+                navigateToRegisterProduct = navigateToRegisterProduct,
+                navigateToProductDetail = navigateToProductDetail
+            )
         }
 
         composable(route = NavigationRoute.Common.RegisterProduct) {
@@ -36,15 +42,19 @@ internal fun NavGraphBuilder.commonNavigation(
         }
 
         composable(route = NavigationRoute.Common.ProductDetail) {
-            ProductDetailScreen()
+            ProductDetailScreen(
+                navigateToInputReceiving = navigateToInputReceiving,
+                navigateToInputReleasing = navigateToInputReleasing,
+                popBackStack = popBackStack
+            )
         }
 
         composable(route = NavigationRoute.Common.InputReceiving) {
-            InputReceivingScreen()
+            InputReceivingScreen(popBackStack = popBackStack)
         }
 
         composable(route = NavigationRoute.Common.InputReleasing) {
-            InputReleasingScreen()
+            InputReleasingScreen(popBackStack = popBackStack)
         }
     }
 }

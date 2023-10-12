@@ -23,6 +23,7 @@ import com.untitled.unboxing.ui.component.BottomBar
 @Composable
 internal fun Root(
     navigateToRegisterProduct: () -> Unit,
+    navigateToProductDetail: () -> Unit,
 ) {
     val navController = rememberNavController()
 
@@ -45,7 +46,7 @@ internal fun Root(
                 }
 
                 composable(route = NavigationRoute.Main.Product) {
-                    ProductScreen()
+                    ProductScreen(navigateToProductDetail = navigateToProductDetail)
                 }
 
                 composable(route = NavigationRoute.Main.Withdrawal) {

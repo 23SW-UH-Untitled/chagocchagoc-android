@@ -18,9 +18,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/Root.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/Root.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/inputwithdrawal/InputWithdrawalScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/inputwithdrawal/InputWithdrawalScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/main/product/ProductScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/main/product/ProductScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/productdetail/ProductDetailScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/feature/productdetail/ProductDetailScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/navigation/CommonNavigation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/navigation/CommonNavigation.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/navigation/NavigationRoute.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/navigation/NavigationRoute.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/ui/component/TextField.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/ui/component/TextField.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/navigation/UnboxingApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/navigation/UnboxingApp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/ui/component/BottomBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/ui/component/BottomBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/ui/component/Button.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/ui/component/Button.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/ui/util/clickable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/untitled/unboxing/ui/util/clickable.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +157,7 @@
       <recent name="com.untitled.chagocchagoc.navigation" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.untitled.unboxing.ui.util" />
       <recent name="com.untitled.unboxing.network" />
     </key>
   </component>

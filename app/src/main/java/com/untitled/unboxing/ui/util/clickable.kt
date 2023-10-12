@@ -37,6 +37,12 @@ fun Modifier.unboxingClickable(
     )
 }
 
+fun Modifier.noRippleClickable(): Modifier = composed {
+    clickable(indication = null,
+        interactionSource = remember { MutableInteractionSource() }) {
+    }
+}
+
 enum class ButtonState { Pressed, Idle }
 
 fun Modifier.bounceClick() = composed {

@@ -33,10 +33,13 @@ import com.untitled.unboxing.ui.component.LargeButton
 import com.untitled.unboxing.ui.component.UnboxingTextField
 import com.untitled.unboxing.ui.theme.UnboxingColor
 import com.untitled.unboxing.ui.theme.UnboxingTypo
+import com.untitled.unboxing.ui.util.NoRippleInteractionSource
 import com.untitled.unboxing.ui.util.bounceClick
 
 @Composable
-internal fun InputReceivingScreen() {
+internal fun InputReceivingScreen(
+    popBackStack: () -> Unit,
+) {
 
     var text by remember { mutableStateOf("") }
 
@@ -54,8 +57,10 @@ internal fun InputReceivingScreen() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(
-                modifier = Modifier.size(25.dp),
-                onClick = { /*TODO*/ }
+                modifier = Modifier.size(25.dp)
+                    .bounceClick(),
+                onClick = popBackStack,
+                interactionSource = NoRippleInteractionSource()
             ) {
                 Icon(
                     modifier = Modifier.size(22.dp, 17.dp),
@@ -74,7 +79,7 @@ internal fun InputReceivingScreen() {
             Text(
                 text = "입고 수량을 입력해주세요",
                 style = UnboxingTypo.h5.copy(
-                    fontWeight = FontWeight.SemiBold
+                    fontWeight = FontWeight.Bold
                 ),
                 color = UnboxingColor.Neutral10
             )
@@ -129,7 +134,9 @@ internal fun InputReceivingScreen() {
 }
 
 @Composable
-internal fun InputReleasingScreen() {
+internal fun InputReleasingScreen(
+    popBackStack: () -> Unit,
+) {
 
     var text by remember { mutableStateOf("") }
 
@@ -147,8 +154,10 @@ internal fun InputReleasingScreen() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(
-                modifier = Modifier.size(25.dp),
-                onClick = { /*TODO*/ }
+                modifier = Modifier.size(25.dp)
+                    .bounceClick(),
+                onClick = popBackStack,
+                interactionSource = NoRippleInteractionSource()
             ) {
                 Icon(
                     modifier = Modifier.size(22.dp, 17.dp),
