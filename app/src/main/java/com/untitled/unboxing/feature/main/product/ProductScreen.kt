@@ -40,13 +40,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.untitled.unboxing.R
+import com.untitled.unboxing.navigation.NavigationRoute
 import com.untitled.unboxing.ui.theme.UnboxingColor
 import com.untitled.unboxing.ui.theme.UnboxingTypo
+import com.untitled.unboxing.ui.util.bounceClick
+import com.untitled.unboxing.ui.util.unboxingClickable
 
 @Composable
-internal fun ProductScreen() {
+internal fun ProductScreen(
+    navigateToProductDetail: () -> Unit
+) {
 
     val scrollState = rememberLazyGridState()
     var scrollUpState by remember { mutableStateOf(false) }
@@ -87,7 +93,7 @@ internal fun ProductScreen() {
                             text = "제품",
                             fontWeight = FontWeight.Bold,
                             style = UnboxingTypo.h4.copy(
-                                fontSize = 26.sp,
+                                fontSize = 28.sp,
                                 fontWeight = FontWeight.SemiBold
                             )
                         )
@@ -123,7 +129,15 @@ internal fun ProductScreen() {
                     }
                 }
                 items(15) {
-                    ProductItem(inventory = "3,000개", productName = "하이드 골지 오버 후드 니트 (3C)")
+                    ProductItem(
+                        inventory = "3,000개",
+                        productName = "하이드 골지 오버 후드 니트 (3C)",
+                        modifier = Modifier
+                            .bounceClick()
+                            .unboxingClickable {
+                                navigateToProductDetail()
+                            }
+                    )
                 }
                 item(span = { GridItemSpan(2) }) {
                     Spacer(modifier = Modifier.height(60.dp))
@@ -184,17 +198,18 @@ private fun ProductItem(
 ) {
     Column {
         AsyncImage(
-            modifier = modifier.clip(RoundedCornerShape(20.dp)),
+            modifier = modifier
+                .clip(RoundedCornerShape(20.dp)),
             model = "https://shop-phinf.pstatic.net/20231005_78/1696502208560g5UHd_JPEG/8184287702687831_682110038.jpg",
             contentDescription = null,
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.FillWidth
         )
 
         Spacer(modifier = Modifier.height(5.dp))
 
         Text(
             text = inventory,
-            style = UnboxingTypo.body2.copy(
+            style = UnboxingTypo.body1.copy(
                 fontWeight = FontWeight.SemiBold
             ),
             color = UnboxingColor.Neutral20
@@ -204,11 +219,7 @@ private fun ProductItem(
 
         Text(
             text = productName,
-            style = UnboxingTypo.body2.copy(
-                fontWeight = FontWeight.Normal,
-                fontSize = 12.sp,
-                lineHeight = 20.sp
-            ),
+            style = UnboxingTypo.subtitle1,
             color = UnboxingColor.Neutral30
         )
     }

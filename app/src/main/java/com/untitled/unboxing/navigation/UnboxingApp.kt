@@ -17,8 +17,11 @@ internal fun UnboxingApp() {
     ) {
         commonNavigation(
             navigateToRegisterProduct = { navHostController.navigate(NavigationRoute.Common.RegisterProduct) },
+            navigateToProductDetail = { navHostController.navigate(NavigationRoute.Common.ProductDetail) },
             popBackStack = { navHostController.popBackStack() },
-            navController = navHostController
+            navController = navHostController,
+            navigateToInputReleasing = { navHostController.navigate(NavigationRoute.Common.InputReleasing) },
+            navigateToInputReceiving = { navHostController.navigate(NavigationRoute.Common.InputReceiving) }
         )
     }
 }

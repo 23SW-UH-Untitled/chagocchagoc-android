@@ -5,11 +5,10 @@ internal sealed class NavigationRoute(val route: String) {
         const val Splash = "splash"
         const val Root = "root"
         const val RegisterProduct = "registerProduct"
-<<<<<<< HEAD
         const val ProductDetail = "productDetail"
-=======
         const val ScanBarcode = "scanBarcode"
->>>>>>> feature/home
+        const val InputReceiving= "inputReceiving"
+        const val InputReleasing = "inputReleasing"
     }
 
     object Main : NavigationRoute(route = "main") {

@@ -17,6 +17,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -26,6 +27,7 @@ import androidx.navigation.NavController
 import com.google.android.gms.common.api.ApiException
 import com.untitled.unboxing.GoogleApiContract
 import com.untitled.unboxing.R
+import com.untitled.unboxing.UnboxingApplication
 import com.untitled.unboxing.navigation.NavigationRoute
 import com.untitled.unboxing.ui.theme.UnboxingColor
 import com.untitled.unboxing.ui.theme.UnboxingTypo
@@ -37,9 +39,16 @@ internal fun SplashScreen(
     viewModel: SplashViewModel = hiltViewModel(),
     navController: NavController
 ) {
-
     LaunchedEffect(Unit) {
+        if (UnboxingApplication.prefs.getIsLogin()) {
+            navController.navigate(NavigationRoute.Common.Root)
+        }
         viewModel.successLogin.collect {
+            UnboxingApplication.prefs.apply {
+                login()
+                setString("accessToken", it.accessToken)
+                setString("refreshToken", it.refreshToken)
+            }
             navController.navigate(NavigationRoute.Common.Root)
         }
     }

@@ -33,9 +33,17 @@ import com.untitled.unboxing.ui.component.LargeButton
 import com.untitled.unboxing.ui.component.LineChart
 import com.untitled.unboxing.ui.theme.UnboxingColor
 import com.untitled.unboxing.ui.theme.UnboxingTypo
+import com.untitled.unboxing.ui.util.NoRippleInteractionSource
+import com.untitled.unboxing.ui.util.bounceClick
+import com.untitled.unboxing.ui.util.noRippleClickable
+import com.untitled.unboxing.ui.util.unboxingClickable
 
 @Composable
-internal fun ProductDetailScreen() {
+internal fun ProductDetailScreen(
+    popBackStack: () -> Unit,
+    navigateToInputReceiving: () -> Unit,
+    navigateToInputReleasing: () -> Unit,
+) {
 
     val scrollState = rememberScrollState()
 
@@ -53,8 +61,9 @@ internal fun ProductDetailScreen() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(
-                modifier = Modifier.size(25.dp),
-                onClick = { /*TODO*/ }
+                modifier = Modifier.size(25.dp).bounceClick(),
+                onClick = popBackStack,
+                interactionSource = NoRippleInteractionSource()
             ) {
                 Icon(
                     modifier = Modifier.size(22.dp, 17.dp),
@@ -67,9 +76,11 @@ internal fun ProductDetailScreen() {
             Spacer(modifier = Modifier.weight(1f))
 
             Text(
-                modifier = Modifier.clickable {
-                    /* TODO */
-                },
+                modifier = Modifier
+                    .bounceClick()
+                    .unboxingClickable {
+
+                    },
                 text = "편집",
                 style = UnboxingTypo.body1.copy(
                     fontWeight = FontWeight.SemiBold
@@ -219,14 +230,6 @@ internal fun ProductDetailScreen() {
                     style = UnboxingTypo.body1,
                     color = UnboxingColor.Primary40
                 )
-
-                Spacer(modifier = Modifier.width(14.dp))
-
-                Icon(
-                    tint = UnboxingColor.Neutral70,
-                    painter = painterResource(id = R.drawable.ic_right_arrow),
-                    contentDescription = null,
-                )
             }
 
             Divider(
@@ -264,21 +267,23 @@ internal fun ProductDetailScreen() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             LargeButton(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.weight(1f)
+                    .bounceClick(),
                 text = "입고하기",
                 contentColor = UnboxingColor.Primary40,
                 containerColor = UnboxingColor.Primary90
             ) {
-                // TODO
+                navigateToInputReceiving()
             }
             
             Spacer(modifier = Modifier.width(10.dp))
 
             LargeButton(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.weight(1f)
+                    .bounceClick(),
                 text = "출고하기"
             ) {
-                // TODO
+                navigateToInputReleasing()
             }
         }
     }
