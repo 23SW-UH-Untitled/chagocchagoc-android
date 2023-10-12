@@ -12,11 +12,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.untitled.unboxing.ui.util.unboxingClickable
 
 @Composable
 internal fun Header(
     @DrawableRes leadingIconRes: Int?,
     trailingIconRes: List<Int>?,
+    onClicks: List<(() -> Unit)?>?,
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -35,10 +37,12 @@ internal fun Header(
         Spacer(modifier = Modifier.weight(1f))
         Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
             trailingIconRes?.run {
-                forEach {
+                forEachIndexed { index, element ->
                     Image(
-                        modifier = Modifier.size(20.dp),
-                        painter = painterResource(id = it),
+                        modifier = Modifier
+                            .size(20.dp)
+                            .unboxingClickable(onClick = onClicks?.get(index) ?: {}),
+                        painter = painterResource(id = element),
                         contentDescription = null,
                     )
                 }

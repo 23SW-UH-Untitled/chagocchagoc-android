@@ -59,21 +59,18 @@ private fun SignInButton(
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clip(CircleShape)
+            .bounceClick()
             .border(
                 width = 1.dp,
                 color = UnboxingColor.Neutral70,
                 shape = CircleShape,
             )
-            .clip(CircleShape)
-            .unboxingClickable(
-                rippleEnabled = true,
-                onClick = onClick,
-            )
+            .unboxingClickable(onClick = onClick)
             .padding(
                 horizontal = 36.dp,
                 vertical = 14.dp,
-            )
-            .bounceClick(),
+            ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
