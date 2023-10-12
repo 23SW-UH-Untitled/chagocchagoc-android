@@ -1,10 +1,15 @@
 package com.untitled.unboxing.feature.registerproduct
 
 import android.Manifest
+import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.launch
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -48,6 +53,17 @@ import com.untitled.unboxing.ui.util.bounceClick
 import com.untitled.unboxing.ui.util.unboxingClickable
 import kotlinx.coroutines.launch
 
+private enum class SheetType {
+    BARCODE,
+    PICTURE,
+}
+
+private enum class PermissionType {
+    CAMERA,
+    GALLERY,
+}
+
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun RegisterProduct() {
@@ -73,25 +89,9 @@ internal fun RegisterProduct() {
 
     val coroutineScope = rememberCoroutineScope()
 
-    val onBarcodeClick: (String) -> Unit = { value: String ->
-        barcode = value
+    val hideBottomSheet: () -> Unit = {
         coroutineScope.launch {
             bottomSheetState.hide()
-        }
-    }
-
-    var selectedImage: Uri? by remember { mutableStateOf(null) }
-
-    val imageLauncher =
-        rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) {
-            if (it != null) {
-                selectedImage = it
-            }
-        }
-
-    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
-        if (it) {
-            imageLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
     }
 
@@ -101,10 +101,82 @@ internal fun RegisterProduct() {
         }
     }
 
+    val onBarcodeClick: (String) -> Unit = { value: String ->
+        barcode = value
+        hideBottomSheet()
+    }
+
+    var permissionType by remember { mutableStateOf(PermissionType.GALLERY) }
+
+    var selectedImage: Uri? by remember { mutableStateOf(null) }
+
+    var takenPictureBitmap: Bitmap? by remember { mutableStateOf(null) }
+
+    val imageLauncher =
+        rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) {
+            if (it != null) {
+                coroutineScope.launch {
+                    bottomSheetState.hide()
+                }
+                selectedImage = it
+            }
+        }
+
+    val takePictureLauncher =
+        rememberLauncherForActivityResult(ActivityResultContracts.TakePicturePreview()) {
+            takenPictureBitmap = it
+            hideBottomSheet()
+        }
+
+    val permissionLauncher =
+        rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) {
+                when (permissionType) {
+                    PermissionType.GALLERY -> imageLauncher.launch(
+                        PickVisualMediaRequest(
+                            ActivityResultContracts.PickVisualMedia.ImageOnly,
+                        )
+                    )
+
+                    else -> takePictureLauncher.launch()
+                }
+
+            }
+        }
+
+    var sheetType by remember { mutableStateOf(SheetType.PICTURE) }
+
+    val showBarcodeBottomSheet: () -> Unit = {
+        sheetType = SheetType.BARCODE
+        showBottomSheet()
+    }
+
+    val showPictureBottomSheet: () -> Unit = {
+        sheetType = SheetType.PICTURE
+        showBottomSheet()
+    }
+
     ModalBottomSheetLayout(
         sheetContent = {
-            BarcodeBottomSheet(onBarcodeClick)
-        }, sheetState = bottomSheetState, sheetShape = RoundedCornerShape(
+            if (sheetType == SheetType.BARCODE) {
+                BarcodeBottomSheet(onBarcodeClick)
+            } else {
+                PictureBottomSheet(
+                    onCameraClick = {
+                        permissionType = PermissionType.CAMERA
+                        permissionLauncher.launch(Manifest.permission.CAMERA)
+                    },
+                    onGalleryClick = {
+                        imageLauncher.launch(
+                            PickVisualMediaRequest(
+                                ActivityResultContracts.PickVisualMedia.ImageOnly,
+                            )
+                        )
+                    },
+                )
+            }
+        },
+        sheetState = bottomSheetState, sheetShape = RoundedCornerShape(
             topStart = 20.dp,
             topEnd = 20.dp,
         )
@@ -143,10 +215,13 @@ internal fun RegisterProduct() {
                         .clip(RoundedCornerShape(16.dp))
                         .unboxingClickable(
                             rippleEnabled = true,
-                            onClick = { launcher.launch(Manifest.permission.CAMERA) },
+                            onClick = {
+                                showPictureBottomSheet()
+                            },
                         ),
-                    model = if (selectedImage == null) R.drawable.ic_photo
-                    else selectedImage,
+                    model = if (selectedImage != null) selectedImage
+                    else if (takenPictureBitmap != null) takenPictureBitmap
+                    else R.drawable.ic_photo,
                     contentScale = if (selectedImage == null) ContentScale.Fit
                     else ContentScale.Crop,
                     contentDescription = null,
@@ -161,7 +236,7 @@ internal fun RegisterProduct() {
                 onPurchaseChange = onPurchaseChange,
                 selling = { selling },
                 onSellingChange = onSellingChange,
-                showBottomSheet = showBottomSheet,
+                showBottomSheet = showBarcodeBottomSheet,
             )
             Spacer(modifier = Modifier.weight(1f))
             ProductButton(
@@ -182,10 +257,7 @@ private fun ProductButton(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .unboxingClickable(
-                rippleEnabled = true,
-                onClick = onClick,
-            )
+            .unboxingClickable(onClick = onClick)
             .bounceClick()
             .background(
                 color = UnboxingColor.Primary40,
@@ -344,6 +416,78 @@ private fun BarcodeBottomSheet(
             style = UnboxingTypo.body1,
             color = UnboxingColor.Neutral50,
         )
+        Spacer(modifier = Modifier.height(60.dp))
+    }
+}
+
+@Composable
+private fun PictureBottomSheet(
+    onCameraClick: () -> Unit,
+    onGalleryClick: () -> Unit,
+) {
+
+    val intent = Intent()
+
+    Column(
+        modifier = Modifier.padding(horizontal = 24.dp),
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+    ) {
+        Spacer(modifier = Modifier.height(24.dp))
+        Text(
+            text = "사진 등록 방법을 선택해주세요",
+            style = UnboxingTypo.h6,
+            fontWeight = FontWeight.Bold,
+            fontSize = 22.sp,
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .unboxingClickable(
+                        rippleEnabled = true,
+                        onClick = onCameraClick,
+                    ),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Spacer(modifier = Modifier.height(16.dp))
+                Image(
+                    modifier = Modifier.size(48.dp),
+                    painter = painterResource(id = R.drawable.ic_camera),
+                    contentDescription = null,
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "사진 촬영",
+                    style = UnboxingTypo.body1,
+                    color = UnboxingColor.Neutral50,
+                )
+            }
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .unboxingClickable(
+                        rippleEnabled = true,
+                        onClick = onGalleryClick,
+                    ),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Spacer(modifier = Modifier.height(16.dp))
+                Image(
+                    modifier = Modifier.size(48.dp),
+                    painter = painterResource(id = R.drawable.ic_gallery),
+                    contentDescription = null,
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "사진 선택",
+                    style = UnboxingTypo.body1,
+                    color = UnboxingColor.Neutral50,
+                )
+            }
+        }
         Spacer(modifier = Modifier.height(60.dp))
     }
 }
